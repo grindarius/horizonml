@@ -1,0 +1,13 @@
+{
+    "editor.tabSize": 4,
+    "editor.bracketPairColorization.enabled": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
+    "files.eol": "\n",
+    "files.autoSave": "onFocusChange",
+    "files.insertFinalNewline": true,
+    "editor.renderFinalNewline": true,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false
+}
