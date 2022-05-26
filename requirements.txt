@@ -1,0 +1,12 @@
+ipykernel
+notebook
+jupyter
+numpy
+pandas
+tensorflow
+keras
+pip_search
+autopep8
+imutils
+opencv-contrib-python
+matplotlib
