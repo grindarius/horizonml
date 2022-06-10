@@ -10,3 +10,14 @@ autopep8
 imutils
 opencv-contrib-python
 matplotlib
+numpy
+pandas
+matplotlib
+pillow
+tensorflow
+ipykernel
+notebook
+jupyter
+autopep8
+h5py
+pyyaml

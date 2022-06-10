@@ -10,3 +10,5 @@ You need
 - [Portenta Vision Shield](https://store.arduino.cc/products/arduino-portenta-vision-shield-ethernet)
 - [OpenMV IDE](https://openmv.io/)
 - [Arduino IDE V1](https://www.arduino.cc/en/software)
+
+https://colab.research.google.com/drive/1Cn1rNUbQ3gXFS9vTW_O3ecWPF84zKdvS?usp=sharing
