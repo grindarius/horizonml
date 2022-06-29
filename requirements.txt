@@ -1,8 +1,6 @@
 ipykernel
 notebook
 jupyter
-numpy
-pandas
 tensorflow
 keras
 pip_search
@@ -12,12 +10,6 @@ opencv-contrib-python
 matplotlib
 numpy
 pandas
-matplotlib
 pillow
-tensorflow
-ipykernel
-notebook
-jupyter
-autopep8
 h5py
 pyyaml
