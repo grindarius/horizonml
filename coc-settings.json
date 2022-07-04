@@ -1,5 +1,0 @@
-{
-    "python.pythonPath": "/home/grindarius/.pyenv/versions/3.8.10/bin/python3",
-    "python.venvPath": "/mnt/d/codings/horizonml/venv-linux/",
-    "python.analysis.stubPath": "typings"
-}
