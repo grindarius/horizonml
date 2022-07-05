@@ -1,21 +1,22 @@
 import cv2 
 from keras.datasets import mnist
-import matplotlib.pyplot as plt
 import numpy as np
 
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-def f(x):
-    return cv2.resize(x, (160, 120))
+x_train_upsized_temp = []
+x_test_upsized_temp = []
 
-x_train = f(x_train)
-x_test = f(x_test)
+def resize_image(image):
+    return cv2.resize(image, (160, 120))
 
-print(x_train.shape)
+for image in range(x_train.shape[0]):
+    x_train_upsized_temp.append(resize_image(x_train[image]))
 
-# plt.imshow(x_train[0])
-# plt.show()
+for image in range(x_test.shape[0]):
+    x_test_upsized_temp.append(resize_image(x_test[image]))
 
-# resized = cv2.resize(x_train[0], (160, 120))
-# plt.imshow(resized)
-# plt.show()
+x_train_upsized = np.array(x_train_upsized_temp)
+x_test_upsized = np.array(x_test_upsized_temp)
+
+print(x_train_upsized.shape)

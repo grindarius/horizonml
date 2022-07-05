@@ -44,4 +44,4 @@ model.fit(x_train, y_train, epochs=5)
 value_loss, value_accuracy = model.evaluate(x_test, y_test)
 print(value_loss, value_accuracy)
 
-model.save('mnist_model.model')
+model.save('mnist_model_normalized')

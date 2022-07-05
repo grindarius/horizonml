@@ -161,7 +161,4 @@ cython_debug/
 #.idea/
 
 fire_dataset
-mnist_model.model/keras_metadata.pb
-mnist_model.model/saved_model.pb
-mnist_model.model/variables/variables.data-00000-of-00001
-mnist_model.model/variables/variables.index
+mnist_model*
