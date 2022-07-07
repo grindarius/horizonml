@@ -1,7 +1,7 @@
-import cv2 
 from keras.datasets import mnist
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 (_, y_train), (_, x_test) = mnist.load_data()
 
@@ -15,14 +15,25 @@ x_test = x_test_file['x_test']
 x_train_file.close()
 x_test_file.close()
 
-print('normalizing images')
-x_train = tf.keras.utils.normalize(x_train, axis=1)
-x_test = tf.keras.utils.normalize(x_test, axis=1)
+'''
+Image normalization cannot be performed on the machine that I'm currently using in the lab,
+because there's too little RAM for tensorflow to offload all the data into RAM to transform them.
 
-print(x_train.shape, y_train.shape)
+I will try this on my own machine instead and hopefully generate a pre-normalized file and send
+here using flash drive of some sort, the npz file is way too big to hold on github.
+'''
+# print('normalizing images')
+# x_train = tf.keras.utils.normalize(x_train, axis=1)
+# x_test = tf.keras.utils.normalize(x_test, axis=1)
+
+print(x_train.shape, x_test.shape)
 print(x_train[0].shape)
+print(x_test[0].shape)
 
-print('creating model')
+plt.imshow(x_train[0])
+plt.show()
+
+# print('creating model')
 # model = tf.keras.models.Sequential()
 
 # # adding the input layer
