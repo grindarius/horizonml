@@ -162,3 +162,5 @@ cython_debug/
 
 fire_dataset
 mnist_model*
+x_test.npz
+x_train.npz

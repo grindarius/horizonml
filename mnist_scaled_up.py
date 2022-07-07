@@ -1,22 +1,51 @@
 import cv2 
 from keras.datasets import mnist
 import numpy as np
+import tensorflow as tf
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+(_, y_train), (_, x_test) = mnist.load_data()
 
-x_train_upsized_temp = []
-x_test_upsized_temp = []
+print('loading custom local data')
+x_train_file = np.load('./x_train.npz', allow_pickle=True)
+x_test_file = np.load('./x_test.npz', allow_pickle=True)
 
-def resize_image(image):
-    return cv2.resize(image, (160, 120))
+x_train = x_train_file['x_train']
+x_test = x_test_file['x_test']
 
-for image in range(x_train.shape[0]):
-    x_train_upsized_temp.append(resize_image(x_train[image]))
+x_train_file.close()
+x_test_file.close()
 
-for image in range(x_test.shape[0]):
-    x_test_upsized_temp.append(resize_image(x_test[image]))
+print('normalizing images')
+x_train = tf.keras.utils.normalize(x_train, axis=1)
+x_test = tf.keras.utils.normalize(x_test, axis=1)
 
-x_train_upsized = np.array(x_train_upsized_temp)
-x_test_upsized = np.array(x_test_upsized_temp)
+print(x_train.shape, y_train.shape)
+print(x_train[0].shape)
 
-print(x_train_upsized.shape)
+print('creating model')
+# model = tf.keras.models.Sequential()
+
+# # adding the input layer
+# model.add(tf.keras.layers.Flatten(input_shape=(160, 120)))
+
+# # adding the hidden layer
+# model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
+
+# # adding the output layer
+# model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
+
+# print(model.summary())
+
+# model.compile(
+    # optimizer='adam',
+    # loss='sparse_categorical_crossentropy',
+    # metrics=['accuracy']
+# )
+
+# print('training model')
+# model.fit(x_train, y_train, epochs=5)
+
+# value_loss, value_accuracy = model.evaluate(x_test, y_test)
+# print(value_loss, value_accuracy)
+
+# model.save('mnist_model_scaled')
