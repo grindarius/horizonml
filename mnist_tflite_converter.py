@@ -18,18 +18,26 @@ def generate_representative_data():
 x_train = x_train.astype(np.float32) / 255.0
 x_test = x_test.astype(np.float32) / 255.0
 
+# model = tf.keras.Sequential([
+    # tf.keras.layers.InputLayer(input_size=(28, 28)),
+    # tf.keras.layers.Reshape(target_shape=(28, 28, 1)),
+    # tf.keras.layers.Conv2D(filters=12, kernel_size=(3, 3), activation='relu'),
+    # tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
+    # tf.keras.layers.Flatten(),
+    # tf.keras.layers.Dense(10)
+# ])
+
 model = tf.keras.Sequential([
-    tf.keras.layers.InputLayer(input_shape=(28, 28)),
-    tf.keras.layers.Reshape(target_shape=(28, 28, 1)),
-    tf.keras.layers.Conv2D(filters=12, kernel_size=(3, 3), activation='relu'),
-    tf.keras.layers.MaxPooling2D(pool_size=(2, 2)),
-    tf.keras.layers.Flatten(),
-    tf.keras.layers.Dense(10)
+    tf.keras.layers.Flatten(input_shape=(28, 28)),
+    tf.keras.layers.Dense(128, activation=tf.nn.relu),
+    tf.keras.layers.Dense(10, activation=tf.nn.softmax),
 ])
+
+print(model.summary())
 
 model.compile(
     optimizer='adam',
-    loss=tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True),
+    loss=tf.keras.losses.SparseCategoricalCrossentropy(),
     metrics=['accuracy']
 )
 
@@ -54,7 +62,7 @@ converter.inference_output_type = tf.uint8
 
 tflite_model_quantized = converter.convert()
 
-tflite_model_dir = pathlib.Path('mnist_tf_model')
+tflite_model_dir = pathlib.Path('mnist_tf_model_default_layers')
 tflite_model_dir.mkdir(exist_ok=True, parents=True)
 
 tflite_model_file = tflite_model_dir / 'mnist_model.tflite'
