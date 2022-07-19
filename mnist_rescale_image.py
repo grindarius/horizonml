@@ -1,3 +1,7 @@
+'''
+a script to resize image to (160, 120) for mnist datasets, makes the train model reeally bad results
+'''
+
 from keras.datasets import mnist
 import cv2
 import numpy as np

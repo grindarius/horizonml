@@ -5,7 +5,6 @@ ipykernel
 notebook
 jupyter
 tensorflow
-keras
 pip_search
 autopep8
 imutils

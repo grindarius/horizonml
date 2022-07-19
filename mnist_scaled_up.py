@@ -1,3 +1,6 @@
+'''
+Trying out the model of mnist with an enlarged image size, and this does not go great.
+'''
 from keras.datasets import mnist
 import numpy as np
 import tensorflow as tf
@@ -22,9 +25,9 @@ because there's too little RAM for tensorflow to offload all the data into RAM t
 I will try this on my own machine instead and hopefully generate a pre-normalized file and send
 here using flash drive of some sort, the npz file is way too big to hold on github.
 '''
-# print('normalizing images')
-# x_train = tf.keras.utils.normalize(x_train, axis=1)
-# x_test = tf.keras.utils.normalize(x_test, axis=1)
+print('normalizing images')
+x_train = tf.keras.utils.normalize(x_train, axis=1)
+x_test = tf.keras.utils.normalize(x_test, axis=1)
 
 print(x_train.shape, x_test.shape)
 print(x_train[0].shape)
@@ -37,10 +40,10 @@ print('creating model')
 model = tf.keras.models.Sequential()
 
 # adding the input layer
-model.add(tf.keras.layers.Flatten(input_shape=(120, 160)))
+model.add(tf.keras.layers.Flatten(input_shape=(160, 120)))
 
 # adding the hidden layer
-model.add(tf.keras.layers.Dense(256, activation=tf.nn.relu))
+model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
 
 # adding the output layer
 model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
