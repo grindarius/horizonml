@@ -3,7 +3,7 @@ import numpy as np
 import tensorflow as tf
 import matplotlib.pyplot as plt
 
-(_, y_train), (_, x_test) = mnist.load_data()
+(_, y_train), (_, y_test) = mnist.load_data()
 
 print('loading custom local data')
 x_train_file = np.load('./x_train.npz', allow_pickle=True)
@@ -33,30 +33,30 @@ print(x_test[0].shape)
 plt.imshow(x_train[0])
 plt.show()
 
-# print('creating model')
-# model = tf.keras.models.Sequential()
+print('creating model')
+model = tf.keras.models.Sequential()
 
-# # adding the input layer
-# model.add(tf.keras.layers.Flatten(input_shape=(160, 120)))
+# adding the input layer
+model.add(tf.keras.layers.Flatten(input_shape=(120, 160)))
 
-# # adding the hidden layer
-# model.add(tf.keras.layers.Dense(128, activation=tf.nn.relu))
+# adding the hidden layer
+model.add(tf.keras.layers.Dense(256, activation=tf.nn.relu))
 
-# # adding the output layer
-# model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
+# adding the output layer
+model.add(tf.keras.layers.Dense(10, activation=tf.nn.softmax))
 
-# print(model.summary())
+print(model.summary())
 
-# model.compile(
-    # optimizer='adam',
-    # loss='sparse_categorical_crossentropy',
-    # metrics=['accuracy']
-# )
+model.compile(
+    optimizer='adam',
+    loss='sparse_categorical_crossentropy',
+    metrics=['accuracy']
+)
 
-# print('training model')
-# model.fit(x_train, y_train, epochs=5)
+print('training model')
+model.fit(x_train, y_train, epochs=5)
 
-# value_loss, value_accuracy = model.evaluate(x_test, y_test)
-# print(value_loss, value_accuracy)
+value_loss, value_accuracy = model.evaluate(x_test, y_test)
+print(value_loss, value_accuracy)
 
-# model.save('mnist_model_scaled')
+model.save('mnist_model_scaled')

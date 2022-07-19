@@ -11,15 +11,34 @@ returning String labels.
 import tensorflow as tf
 from keras.datasets import mnist
 import numpy as np
+import matplotlib.pyplot as plt
+import PIL
 
-labels = ['who', 'can', 'see', 'the', 'better', 'picture', 'here', 'for', 'each', 'other']
+x_train_file = np.load('./x_train.npz')
+x_test_file = np.load('./x_test.npz')
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+x_train = x_train_file['x_train']
+x_test = x_test_file['x_test']
 
-model = tf.keras.models.load_model('./mnist_model.model')
+x_train_file.close()
+x_test_file.close()
+
+(_, y_train), (_, y_test) = mnist.load_data()
+
+model = tf.keras.models.load_model('./mnist_model_scaled')
 
 predictions = model.predict([x_test])
 
+plt.figure(figsize=(10, 10))
+
+for i in range(16):
+    plt.subplot(4, 4, i + 1)
+    img = x_test[i]
+    plt.imshow(img)
+    plt.title(y_test[i])
+    plt.axis('off')
+
+plt.show()
+
 print(predictions[0])
 print(np.argmax(predictions[0]))
-print(labels[np.argmax(predictions[0])])
