@@ -24,6 +24,9 @@ You need
 - Connect Rx/Tx pin from Portenta Vision Shield to Uno at port number 4 and 5 (Rx and Tx accordingly) of Portenta Vision Shield. Portenta H7's pin diagram [here](https://docs.arduino.cc/hardware/portenta-h7)
 - Upload the code in file [portenta_h7.ino](./portenta_h7.ino) and [uno.ino](./uno.ino) onto the board accordingly.
 - Run python script [read_serial_terminal.py](./read_serial_terminal.py) to capture any serial terminal activities.
+- Download any sound you have associated with your class, and convert it to .mp3 format.
+- Rename your sound file to the name you wanted to use and reference it in the file [testing.py](./testing.py)
+- Run the file and wait for the sound to play.
 
 # 2 Model OpenMV setup
 ## Model setup
